@@ -1,5 +1,6 @@
 import os
 import random
+import sys
 from collections import defaultdict
 
 # Quiz data: List of dictionaries containing question, choices, correct answer, reasoning, and section
@@ -315,7 +316,7 @@ quiz = [
         "section": "Counting Techniques",
         "question": "The number of ways to arrange 4 people in a circle is:",
         "choices": ["a. 6", "b. 12", "c. 24", "d. 3"],
-        "correct": "d",
+        "correct": "a",
         "reasoning": "Circular permutation: (4 - 1)! = 3! = 6 (reviewer, page 5)."
     },
     {
@@ -600,15 +601,18 @@ def run_quiz():
     for i, item in enumerate(quiz, 1):
         clear_screen()
         print(f"Question {i} of {len(quiz)}: {item['section']}")
+        print()
         print(item['question'])
         for choice in item['choices']:
             print(choice)
-        print("\nEnter your answer (a, b, c, or d): ", end="")
+        print("\nEnter your answer (a, b, c, d, or exit): ", end="")
         
         while True:
             answer = input().strip().lower()
             if answer in ['a', 'b', 'c', 'd']:
                 break
+            elif answer == 'exit':
+                sys.exit()
             print("Invalid input. Please enter a, b, c, or d: ", end="")
         
         correct = item['correct']
@@ -635,7 +639,10 @@ def run_quiz():
     print(f"Correct Answers: {score}")
     print(f"Incorrect Answers: {len(quiz) - score}")
     print(f"Percentage Score: {(score / len(quiz)) * 100:.2f}%")
+    print("\nPress Enter to continue...", end="")
+    input()
     
+    clear_screen()
     print("\nSection-wise Breakdown:")
     print("-" * 50)
     print(f"{'Section':<40} {'Correct':<10} {'Total':<10} {'Percentage':<10}")
@@ -645,7 +652,10 @@ def run_quiz():
         total = data['total']
         percentage = (correct / total) * 100 if total > 0 else 0
         print(f"{section:<40} {correct:<10} {total:<10} {percentage:.2f}%")
+    print("\nPress Enter to continue...", end="")
+    input()
     
+    clear_screen()
     print("\nDetailed Results:")
     print("-" * 50)
     for result in results:
@@ -655,9 +665,14 @@ def run_quiz():
         if not is_correct:
             print(f"Reasoning: {reasoning}")
         print()
+    print("\nPress Enter to continue...", end="")
+    input()
+    
+    clear_screen()
+    print("Thank you for answering this Mock Exam!")
 
 if __name__ == "__main__":
-    print("Welcome to the Quantitative Methods Quiz Bee!")
+    print("Welcome to the Quantitative Methods Mock Exam!")
     print("Answer each question with a, b, c, or d. Press Enter to proceed after each question.")
     print("Press Enter to start...", end="")
     input()
