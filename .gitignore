@@ -1,3 +1,8 @@
+# Ignore VS Code settings
 .vscode/
-Database Systems Midterms/exam.exe
-Quantitative Methods Midterms/tempCodeRunnerFile.py
+
+# Ignore all .exe files anywhere
+*.exe
+
+# Ignore all tempCodeRunnerFile.py files anywhere
+tempCodeRunnerFile.py
