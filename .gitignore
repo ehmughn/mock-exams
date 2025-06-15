@@ -5,4 +5,4 @@
 *.exe
 
 # Ignore all tempCodeRunnerFile.py files anywhere
-tempCodeRunnerFile.py
+*/tempCodeRunnerFile.py
